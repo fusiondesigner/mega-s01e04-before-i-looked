@@ -23,7 +23,7 @@ describe('readNight', () => {
     ]);
     expect(digest?.rows[0].owner).toBeNull();
     expect(digest?.rows[1]).toEqual({
-      job: 'fixtures/refresh', owner: 'rook', runs: 4, retries: 3,
+      job: 'fixtures/refresh', owner: 'rook', runs: 4, retries: 3, failures: 0,
       lastStatus: 'ok', lastError: 'upstream 503',
       firstAt: '2026-10-29T01:30:00+01:00', lastAt: '2026-10-29T01:37:00+01:00',
     });
@@ -56,7 +56,7 @@ describe('readNight', () => {
       { at: '2026-10-28T23:00:00Z', job: 'job', status: 'fail', owner: 'old', error: 'older' },
     ]);
     expect(readNight(runsDir, night)?.rows).toEqual([{
-      job: 'job', owner: null, runs: 3, retries: 1, lastStatus: 'ok', lastError: 'latest',
+      job: 'job', owner: null, runs: 3, retries: 1, failures: 1, lastStatus: 'ok', lastError: 'latest',
       firstAt: '2026-10-28T23:00:00Z', lastAt: '2026-10-29T01:00:00Z',
     }]);
   });

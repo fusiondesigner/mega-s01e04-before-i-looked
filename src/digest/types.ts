@@ -6,6 +6,8 @@ export type DigestRow = {
   /** All valid entries for this job, including retries. */
   runs: number;
   retries: number;
+  /** Failed entries, including failures followed by a successful run. */
+  failures: number;
   lastStatus: RunStatus;
   /** Most recent recorded error, retained after a later successful run. */
   lastError: string | null;

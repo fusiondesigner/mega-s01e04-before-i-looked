@@ -73,6 +73,7 @@ export const readNight: ReadNight = (runsDir, night) => {
         row: {
           job: run.job, owner: run.owner, runs: 1,
           retries: run.status === 'retry' ? 1 : 0,
+          failures: run.status === 'fail' ? 1 : 0,
           lastStatus: run.status, lastError: run.error,
           firstAt: run.at, lastAt: run.at,
         },
@@ -83,6 +84,7 @@ export const readNight: ReadNight = (runsDir, night) => {
     const { row } = existing;
     row.runs += 1;
     if (run.status === 'retry') row.retries += 1;
+    if (run.status === 'fail') row.failures += 1;
     if (at < Date.parse(row.firstAt)) row.firstAt = run.at;
     // Equal timestamps use the later log entry; compare instants, preserve display offsets.
     if (at >= Date.parse(row.lastAt)) {

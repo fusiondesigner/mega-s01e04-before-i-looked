@@ -18,6 +18,7 @@ export function DigestPage({ digest }: { digest: DigestNight }) {
               <th>owner</th>
               <th>runs</th>
               <th>retries</th>
+              <th>failures</th>
               <th>last status</th>
               <th>last error</th>
               <th>first at</th>
@@ -26,13 +27,14 @@ export function DigestPage({ digest }: { digest: DigestNight }) {
           </thead>
           <tbody>
             {rows.map((row) => {
-              const flagged = row.retries >= 3 || row.lastStatus === 'fail';
+              const flagged = row.retries >= 3 || row.failures > 0;
               return (
                 <tr class={flagged ? 'warn' : undefined}>
                   <td>{row.job}</td>
                   <td>{row.owner ?? '—'}</td>
                   <td>{row.runs}</td>
                   <td class={row.retries >= 3 ? 'warn' : undefined}>{row.retries}</td>
+                  <td class={row.failures > 0 ? 'warn' : undefined}>{row.failures}</td>
                   <td class={row.lastStatus === 'fail' ? 'warn' : undefined}>{row.lastStatus}</td>
                   <td class={row.lastError ? 'warn' : undefined}>{row.lastError ?? '—'}</td>
                   <td>{row.firstAt}</td>
