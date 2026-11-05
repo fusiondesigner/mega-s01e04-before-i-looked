@@ -1,6 +1,6 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
 ---
@@ -77,3 +77,17 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+- [#1 Run log reader](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/1)
+- [#2 Digest HTML page](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/2)
+- [#3 Digest JSON endpoint](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/3)
+- [#4 Status-board digest links](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/4)
+- [#5 Digest route tests](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/5)
+- [#6 Publish HTML copy for review](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/6)
+- [#7 Remove preview marker and archive plan](https://github.com/fusiondesigner/mega-s01e04-before-i-looked/issues/7)
+
+## Completion note
+
+Issue #6's reviewer inspection requirement is complete: the course reviewer confirmed they had seen the preview in claim5. After separate approval to replace it, the marker-free page was published to the same URL (deployment `6aec23a675a62af130e93482`). The replacement returned HTTP 200, contained no lane marker, showed the `no marker set` banner, and retained content parity.
