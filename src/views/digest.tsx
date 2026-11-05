@@ -1,7 +1,8 @@
 import type { DigestNight } from '../digest/types.js';
 
 export function DigestPage({ digest }: { digest: DigestNight }) {
-  const rows = [...digest.rows].sort((a, b) => a.job.localeCompare(b.job));
+  // The reader owns ordering so HTML and JSON cannot diverge by locale.
+  const rows = digest.rows;
 
   return (
     <>
